@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Title}} | Elden Ring Wiki</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="main-nav">
+            <a href="/" class="logo">
+                <img src="/static/images/elden-ring-logo.png" alt="Elden Ring Logo">
+            </a>
+            <div class="nav-links">
+                <a href="/bosses" class="nav-link">Bosses</a>
+                <a href="/npcs" class="nav-link">NPCs</a>
+                <a href="/favorites" class="nav-link">Favoris</a>
+            </div>
+            <button class="mobile-menu-button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        {{template "content" .}}
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>À propos</h3>
+                <p>Wiki non officiel d'Elden Ring</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liens utiles</h3>
+                <ul>
+                    <li><a href="/bosses">Bosses</a></li>
+                    <li><a href="/npcs">NPCs</a></li>
+                    <li><a href="/favorites">Favoris</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <img src="/static/images/bandai-namco-logo.png" alt="Bandai Namco Logo">
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

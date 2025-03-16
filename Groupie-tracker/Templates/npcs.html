@@ -1,0 +1,51 @@
+{{define "content"}}
+<section class="page-header">
+    <h1>NPCs de l'Entre-terre</h1>
+</section>
+
+<section class="search-section">
+    <form class="search-form" method="GET">
+        <input type="text" name="name" placeholder="Rechercher un NPC..." value="{{.SearchQuery}}">
+        <select name="role">
+            <option value="">Tous les rôles</option>
+            <option value="merchant" {{if eq .Filters.Role "merchant"}}selected{{end}}>Marchand</option>
+            <option value="quest" {{if eq .Filters.Role "quest"}}selected{{end}}>Donneur de quête</option>
+        </select>
+        <button type="submit" class="golden-btn">Rechercher</button>
+    </form>
+</section>
+
+<section class="content-grid">
+    {{range .NPCs}}
+    <div class="content-card">
+        <div class="card-image">
+            <img src="{{.Image}}" alt="{{.Name}}">
+        </div>
+        <div class="card-content">
+            <h2>{{.Name}}</h2>
+            <p>{{.Description}}</p>
+            <div class="card-info">
+                <span>Rôle: {{.Role}}</span>
+                <span>Location: {{.Location}}</span>
+            </div>
+            <div class="card-actions">
+                <a href="/npcs/{{.ID}}" class="golden-btn">Détails</a>
+                <button onclick="addToFavorites('npc', '{{.ID}}')" class="golden-btn">Favoris</button>
+            </div>
+        </div>
+    </div>
+    {{end}}
+</section>
+
+<section class="pagination-section">
+    <div class="pagination">
+        {{if .HasPrev}}
+        <a href="?page={{sub .CurrentPage 1}}&name={{.SearchQuery}}" class="page-link">Précédent</a>
+        {{end}}
+        <span>Page {{.CurrentPage}} sur {{.TotalPages}}</span>
+        {{if .HasNext}}
+        <a href="?page={{add .CurrentPage 1}}&name={{.SearchQuery}}" class="page-link">Suivant</a>
+        {{end}}
+    </div>
+</section>
+{{end}}
